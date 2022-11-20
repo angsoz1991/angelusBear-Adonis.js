@@ -27,6 +27,7 @@ adonis serve --dev
 ```
 
 5. Funcionamento das rotas
+
 ```js
 Route.get("/", ({ request }) => {
     return "...page"
