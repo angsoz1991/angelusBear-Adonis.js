@@ -16,12 +16,64 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get("/", ({ request }) => {
-    return "...page"
+Route.get('/', ({ request }) => {
+    return '...page'
+})
+
+Route.get('/login', () => {
+    return 'GET /login'
+})
+
+Route.post("/login", () => {
+    return "POST /login"
+})
+
+Route.put("/logout", () => {
+    return "PUT /logout"
 })
 
 Route.get("/register", () => {
-    return "...formulário para clientes fazerem novos perfis"
+    return "GET /register"
 })
+
+Route.post("/register", () => {
+    return "POST /register"
+})
+
+Route.get("/forgot-password", () => {
+    return "GET /forgot-password"
+})
+
+Route.post("/forgot-password", () => {
+    return "POST /forgot-password"
+})
+
+Route.get(
+    "/reset-password/:token",
+    ({ params }) => {
+        return "GET /reset-password " + params.token
+    },
+)
+
+Route.post(
+    "/reset-password/:token",
+    ({ params }) => {
+        return "POST /reset-password " + params.token
+    },
+)
+
+Route.get(
+    "/reset-password/:token",
+    ({ params }) => {
+      return "GET /reset-password " + params.token
+    },
+  )
+  Route.post(
+    "/reset-password/:token",
+    ({ params }) => {
+      return "POST /reset-password " + params.token
+    },
+  )
+
 
 Route.on('/').render('welcome')
