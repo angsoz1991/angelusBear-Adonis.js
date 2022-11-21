@@ -16,12 +16,12 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', ({ view  }) => {
+Route.get('/', ({ view }) => {
     return view.render('page/home')
 })
 
-Route.get('/login', () => {
-    return 'GET /login'
+Route.get('/login', ({view}) => {
+    return view.render('user/login')
 })
 
 Route.post("/login", () => {
@@ -32,8 +32,8 @@ Route.put("/logout", () => {
     return "PUT /logout"
 })
 
-Route.get("/register", () => {
-    return "GET /register"
+Route.get("/register", ({view}) => {
+    return  view.render('user/register')
 })
 
 Route.post("/register", () => {
