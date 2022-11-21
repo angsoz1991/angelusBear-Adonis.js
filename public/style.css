@@ -17,6 +17,10 @@ body {
   padding: 0;
 }
 
+.titulo{ 
+  color: blue !important;
+}
+
 section {
   height: 100%;
   display: flex;

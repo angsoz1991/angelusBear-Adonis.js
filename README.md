@@ -87,3 +87,8 @@ Route.get('/', ({ view  }) => {
 
 ```
 
+8.  O comando make:view possui outro parâmetro, que é útil para criar novos arquivos de visualização que estendem uma visualização de layout:
+```js
+adonis make:view user/login --layout layout
+```
+- O parâmetro --layout gera o novo arquivo de exibição e inclui @layout("layout-name") na parte superior dele. Esse @layout diz ao AdonisJs para renderizar este arquivo de visualização como uma extensão do arquivo de visualização de layout nomeado. 
