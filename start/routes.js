@@ -16,8 +16,8 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/', ({ request }) => {
-    return '...page'
+Route.get('/', ({ view  }) => {
+    return view.render('page/home')
 })
 
 Route.get('/login', () => {
