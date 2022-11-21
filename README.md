@@ -26,11 +26,32 @@ adonis new <name-project>
 adonis serve --dev
 ```
 
-5. Funcionamento das rotas
+5. Criando um controller 
 
 ```js
-Route.get("/", ({ request }) => {
-    return "...page"
+adonis make:controller PageControler
+```
+
+6. Funcionamento das rotas
+
+```js
+Route.get('/', ({ request }) => {
+    return `
+    <html>
+      <head>
+        <link rel="stylesheet" href="/style.css" />
+      </head>
+      <body>
+        <section>
+          <div class="logo"></div>
+          <div class="title"></div>
+          <div class="subtitle">
+            <p>AdonisJs é ...</p>
+          </div>
+        </section>
+      </body>
+    </html>
+    `
 })
 
 Route.get("/register", () => {
@@ -38,12 +59,31 @@ Route.get("/register", () => {
 })
 ```
 
-6. Criando um controller 
+Obs.: Embora essa abordagem funcione - para casos simples - ela não é bem dimensionada. Podemos querer usar parte ou todo o HTML para responder a outras rotas. Podemos querer compor respostas a partir de muitos arquivos de modelo ou isolar um comportamento de apresentação específico.
+
+
+7. Criar um arquivo de modelo separado e usá-lo para exibir uma nova página inicial.
 
 ```js
-adonis make:controller PageControler
+adonis make:view page/home
 ```
 
+- {root}/resources/views/page/home.edge
+- Registrar a View Provider (É preciso adicionar o ViewProvider ao aplicativo antes de podermos acessar diretamente a rederização de nossas view o em nossas rotas.) Em /start > app.js
+```js
+const providers = [
+  "@adonisjs/framework/providers/AppProvider",
+  "@adonisjs/framework/providers/ViewProvider",
+]
+```
+
+- Em geral o ViewProvider adiciona uma nova chave ao objeto que cada rota obtém.  Podemos usar essa nova chave de exibição para renderizar arquivos de exibição de dentro dos manipuladores de rota.
 
 
+```js
+Route.get('/', ({ view  }) => {
+    return view.render('page/home')
+})
+
+```
 
